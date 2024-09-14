@@ -12,14 +12,9 @@ app = Flask(__name__)
 
 current_status = "fready"
 
-
 @app.route('/')
 def home():
     return "Welcome to the Flask app!"
-
-
-
-
 
 @app.route('/debug', methods=['POST', 'GET'])
 def debug():
@@ -73,11 +68,13 @@ def analize_video():
     
     @after_this_request
     def cleanup(response):
+        print('cleaning up...')
         try:
             os.remove('video.mp4')
             os.remove('video.mp4_reduced.mp4')
             os.remove('storyboard_analysis.json')
             os.remove('storyboard.png')
+            print('removed: video.mp4, video.mp4_reduced.mp4, storyboard_analysis.json, storyboard.png')
         except Exception as e:
             print(f"Error during cleanup: {e}")
         return response
