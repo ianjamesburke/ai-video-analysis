@@ -1,4 +1,4 @@
-# Video Analysis with OpenAI GPT4o
+# AI Video Analysis with OpenAI GPT4o
 
 I had an idea for a way to analize video B-Roll (non-talking clips) by creating storyboards and sending those to ChatGPT.
 Anyway that was about 12 hours ago. It's currently 6am and I can't be bothered. 
