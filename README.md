@@ -14,5 +14,5 @@ I currently have it set up as a flask REST API with PythonAnywhere that takes di
 
 I guess get an OpenAI API KEY and slap it in a .env then try running the flask_app.py and go to this link..
 
-http://127.0.0.1:5000?url={insert the video url}
+http://127.0.0.1:5000?url={insert-direct-video-url}
 
