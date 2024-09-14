@@ -89,7 +89,7 @@ def sterilize_json(raw_string):
 def main(tile_num):
   analysis = get_vision_analysis(api_key=openai_api_key, image_path="storyboard.png", number_of_frames=tile_num, video_path="video.mp4")
   analysis = sterilize_json(analysis)
-  print('AI Analysis:', analysis)
+  # print('AI Analysis:', analysis)
   with open('storyboard_analysis.json', 'w') as f:
       json.dump(analysis, f, indent=4)
   return analysis

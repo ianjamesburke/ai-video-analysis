@@ -1,36 +1,22 @@
 from flask import Flask, request, jsonify, Response, after_this_request
 import os
-import time
 import json
-import requests
 import urllib.request
 from create_storyboard import main as create_storyboard
 from get_vision_analysis import main as get_vision_analysis
 
-
 app = Flask(__name__)
-
-current_status = "fready"
 
 @app.route('/')
 def home():
     return "Welcome to the Flask app!"
+
 
 @app.route('/debug', methods=['POST', 'GET'])
 def debug():
     message = str(request.args.get('input'))
     data = {'response': message}
     return jsonify(data)
-
-
-
-@app.route('/status')
-def get_status():
-
-    global current_status
-    data = json.dumps({'status': current_status})
-    return Response(data)
-
 
 
 @app.route('/analize_video')
