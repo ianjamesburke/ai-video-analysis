@@ -136,7 +136,7 @@ def main(video_path, output_path):
 if __name__ == "__main__":
     try:
         print("TESTING CREATE STORYBOARD")
-        main('sample.mp4', 'sample_storyboard.png')
+        main('testing/sample.mp4', 'sample_storyboard.png')
         print("PASSED")
     except Exception as e:
         print(e)

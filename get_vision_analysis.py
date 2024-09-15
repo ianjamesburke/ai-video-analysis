@@ -74,31 +74,28 @@ def get_vision_analysis(api_key, image_path, number_of_frames, video_path):
 
 # Function to sterilize JSON
 def sterilize_json(raw_string):
-    # Replace escape characters and remove unnecessary formatting
-    clean_string = raw_string.replace('\\n', '').replace('\\', '').replace('\'', '"')
-    
-    # Convert the cleaned string into a JSON object
+    if not raw_string:
+        return 'AI returned invalid JSON'
+    clean_string = raw_string.replace('\\n', '')
     try:
-        json_data = json.loads(clean_string)
-        return json_data
-    except json.JSONDecodeError as e:
-        print(f"Error parsing JSON: {e}")
-        return None
+        return json.loads(clean_string)
+    except json.JSONDecodeError:
+        return 'AI returned invalid JSON'
 
 
 def main(tile_num):
   analysis = get_vision_analysis(api_key=openai_api_key, image_path="storyboard.png", number_of_frames=tile_num, video_path="video.mp4")
-  analysis = sterilize_json(analysis)
+  sterilize_analysis = sterilize_json(analysis)
   # print('AI Analysis:', analysis)
   with open('storyboard_analysis.json', 'w') as f:
-      json.dump(analysis, f, indent=4)
-  return analysis
+      json.dump(sterilize_analysis, f, indent=4)
+  return sterilize_analysis
 
 
 if __name__ == "__main__":
     try:
         print("TESTING GET VISION ANALYSIS")
-        main()
+        main(20)
         print("PASSED")
     except Exception as e:
         print(f"An error occurred: {e}")
